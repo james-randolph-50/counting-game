@@ -7,6 +7,11 @@ class NumberedBox extends createjs.Container {
 
         var movieClip = new lib.NumberedBox();
         movieClip.numberText.text = number;
+
+        // animates size of boxes on hover
+        new createjs.ButtonHelper(movieClip, 0, 1, 2, false, new lib.NumberedBox(), 3);
+
+
         this.addChild(movieClip);
 
         this.setBounds(0,0,50,50);
@@ -51,6 +56,8 @@ class Game {
         this.stage.width = this.canvas.width;
         this.stage.height = this.canvas.height;
 
+        this.stage.enableMouseOver();
+
         // add touch
         createjs.Touch.enable(this.stage);
 
@@ -65,14 +72,20 @@ class Game {
         // redraws the stage at 60 frames per second
         createjs.Ticker.on("tick", this.stage);
 
-        this.stage.addChild(new lib.Background());
-
-        this.generateMultipleBoxes(this.gameData.amountOfBox);
     
     }
         version() {
             return '1.0.0';
         }
+
+        restartGame() {
+            this.gameData.resetData();
+            this.stage.removeAllChildren();
+            this.stage.addChild(new lib.Background());
+            this.generateMultipleBoxes(this.gameData.amountOfBox);
+
+        }
+
         generateMultipleBoxes(amount=10) {
             for (var i=amount; i>0; i--) {
                 var movieClip = new NumberedBox(this, i);
