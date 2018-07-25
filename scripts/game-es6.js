@@ -35,7 +35,7 @@ class GameData {
         return (number === this.currentNumber);
     }
     isGameWin() {
-        return false;
+        return (this.currentNumber > this.amountOfBox);
     }
 }
 
@@ -67,7 +67,7 @@ class Game {
 
         this.stage.addChild(new lib.Background());
 
-        this.generateMultipleBoxes();
+        this.generateMultipleBoxes(this.gameData.amountOfBox);
     
     }
         version() {
@@ -89,8 +89,14 @@ class Game {
             if (this.gameData.isRightNumber(numberedBox.number)) {
                 this.stage.removeChild(numberedBox);
                 this.gameData.nextNumber();
-            }
-            
+
+                // gameover?
+                if (this.gameData.isGameWin()) {
+                    var gameOverView = new lib.GameOverView();
+                    this.stage.addChild(gameOverView);
+                
+                }
+            }  
         }
 
         retinalize() {
