@@ -72,7 +72,7 @@ class Game {
         // redraws the stage at 60 frames per second
         createjs.Ticker.on("tick", this.stage);
 
-    
+        this.restartGame();
     }
         version() {
             return '1.0.0';
@@ -107,6 +107,10 @@ class Game {
                 if (this.gameData.isGameWin()) {
                     var gameOverView = new lib.GameOverView();
                     this.stage.addChild(gameOverView);
+
+                    gameOverView.restartButton.on('click', (function(){
+                        this.restartGame();
+                    }).bind(this));
                 
                 }
             }  
