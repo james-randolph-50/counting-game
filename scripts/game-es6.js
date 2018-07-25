@@ -32,6 +32,9 @@ class Game {
         // add touch
         createjs.Touch.enable(this.stage);
 
+        // retina screen (for mobile devices)
+        this.retinalize();
+
         createjs.Ticker.setFPS(60);
 
         // redraws the stage at 60 frames per second
@@ -73,7 +76,7 @@ class Game {
             this.canvas.setAttribute('width', Math.round( this.stage.width * ratio ));
             this.canvas.setAttribute('height', Math.round( this.stage.height * ratio ));
 
-            this.scale.scaleX = this.stage.scaleY = ratio;
+            this.stage.scaleX = this.stage.scaleY = ratio;
 
             // CSS style
             this.canvas.style.width = this.stage.width + "px";
