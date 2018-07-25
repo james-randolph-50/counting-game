@@ -86,7 +86,7 @@ class Game {
         }
 
         handleClick(numberedBox) {
-            if (this.gameData.isRightNumber(numberedBox, number)) {
+            if (this.gameData.isRightNumber(numberedBox.number)) {
                 this.stage.removeChild(numberedBox);
                 this.gameData.nextNumber();
             }
