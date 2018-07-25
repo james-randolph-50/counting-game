@@ -19,6 +19,27 @@ class NumberedBox extends createjs.Container {
     }
 }
 
+class GameData {
+    constructor() {
+        this.amountOfBox = 20;
+        this.resetData();
+    }
+    resetData() {
+        this.currentNumber = 1;
+    }
+    nextNumber() {
+        this.currentNumber += 1;
+    }
+    isRightNumber(number) {
+        return (number === this.currentNumber);
+    }
+    isGameWin() {
+        return false;
+    }
+}
+
+
+
 class Game {
     constructor() {
         console.log(`Welcome to the game. Version ${this.version()}`);
@@ -36,6 +57,9 @@ class Game {
         this.retinalize();
 
         createjs.Ticker.setFPS(60);
+
+        // game initialize
+        this.gameData = new GameData();
 
         // redraws the stage at 60 frames per second
         createjs.Ticker.on("tick", this.stage);
@@ -61,6 +85,7 @@ class Game {
         }
 
         handleClick(NumberedBox) {
+            if (this.gameData.isRightNumber(numberedBox, number))
             this.stage.removeChild(NumberedBox);
         }
 
