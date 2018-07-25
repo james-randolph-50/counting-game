@@ -20,7 +20,13 @@ class Game {
         this.stage = new createjs.Stage(this.canvas);
 
         createjs.Ticker.setFPS(60);
+
+        // redraws the stage at 60 frames per second
         createjs.Ticker.on("tick", this.stage);
+
+        this.stage.addChild(new locationbar.Background());
+
+        this.stage.addChild(new NumberedBox(69));
     
     }
         version(){
