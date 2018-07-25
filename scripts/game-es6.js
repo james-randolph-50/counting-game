@@ -2,13 +2,13 @@ class NumberedBox extends createjs.Container {
     constructor(number=0) {
         super();
 
-        var movieClip = new locationbar.NumberedBox();
+        var movieClip = new lib.NumberedBox();
         movieClip.numberText.text = number;
-        this.addChild(movieclip);
+        this.addChild(movieClip);
 
         // randomly place
-        movieclip.x = Math.random() * 200;
-        movieclip.y = Math.random() * 200;
+        movieClip.x = Math.random() * 200;
+        movieClip.y = Math.random() * 200;
     }
 }
 
@@ -24,7 +24,7 @@ class Game {
         // redraws the stage at 60 frames per second
         createjs.Ticker.on("tick", this.stage);
 
-        this.stage.addChild(new locationbar.Background());
+        this.stage.addChild(new lib.Background());
 
         this.stage.addChild(new NumberedBox(69));
     
