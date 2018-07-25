@@ -3,6 +3,7 @@ class NumberedBox extends createjs.Container {
         super();
 
         this.game = game;
+        this.number = number;
 
         var movieClip = new lib.NumberedBox();
         movieClip.numberText.text = number;
@@ -84,9 +85,12 @@ class Game {
             }
         }
 
-        handleClick(NumberedBox) {
-            if (this.gameData.isRightNumber(numberedBox, number))
-            this.stage.removeChild(NumberedBox);
+        handleClick(numberedBox) {
+            if (this.gameData.isRightNumber(numberedBox, number)) {
+                this.stage.removeChild(numberedBox);
+                this.gameData.nextNumber();
+            }
+            
         }
 
         retinalize() {
