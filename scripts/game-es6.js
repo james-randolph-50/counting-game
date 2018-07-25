@@ -1,3 +1,11 @@
+class NumberedBox extends createjs.Container {
+    constructor(number=0) {
+        super();
+
+        var movieClip = new locationbar.NumberedBox();
+    }
+}
+
 class Game {
     constructor() {
         console.log(`Welcome to the game. Version ${this.version()}`);
