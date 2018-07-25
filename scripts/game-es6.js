@@ -72,6 +72,12 @@ class Game {
 
             this.canvas.setAttribute('width', Math.round( this.stage.width * ratio ));
             this.canvas.setAttribute('height', Math.round( this.stage.height * ratio ));
+
+            this.scale.scaleX = this.stage.scaleY = ratio;
+
+            // CSS style
+            this.canvas.style.width = this.stage.width + "px";
+            this.canvas.style.height = this.stage.height + "px";
         }
 
     }
