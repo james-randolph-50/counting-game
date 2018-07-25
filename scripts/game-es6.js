@@ -54,6 +54,10 @@ class Game {
             }
         }
 
+        handleClick(NumberedBox) {
+            this.stage.removeChild(NumberedBox);
+        }
+
     }
     
 //starts game
