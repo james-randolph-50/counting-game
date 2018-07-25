@@ -6,9 +6,8 @@ class NumberedBox extends createjs.Container {
         movieClip.numberText.text = number;
         this.addChild(movieClip);
 
-        // randomly place
-        movieClip.x = Math.random() * 200;
-        movieClip.y = Math.random() * 200;
+        this.setBounds(0,0,50,50);
+
     }
 }
 
@@ -39,6 +38,11 @@ class Game {
             for (var i=amount; i>0; i--) {
                 var movieClip = new NumberedBox(i);
                 this.stage.addChild(movieClip);
+
+                
+        // randomly place
+        movieClip.x = Math.random() * (this.stage.width - movieClip.getBounds().width);
+        movieClip.y = Math.random() * (this.stage.height - movieClip.getBounds().height);
             }
         }
 
