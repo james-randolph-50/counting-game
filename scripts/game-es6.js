@@ -10,7 +10,7 @@ class NumberedBox extends createjs.Container {
 
         this.setBounds(0,0,50,50);
 
-        // handle clicking (or tapping)
+        // handle clicking
         this.on('click', this.handleClick.bind(this));
     }
     handleClick() {
@@ -29,6 +29,9 @@ class Game {
         this.stage.width = this.canvas.width;
         this.stage.height = this.canvas.height;
 
+        // add touch
+        createjs.Touch.enable(this.stage);
+
         createjs.Ticker.setFPS(60);
 
         // redraws the stage at 60 frames per second
@@ -39,7 +42,7 @@ class Game {
         this.generateMultipleBoxes();
     
     }
-        version(){
+        version() {
             return '1.0.0';
         }
         generateMultipleBoxes(amount=10) {
