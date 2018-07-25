@@ -19,6 +19,9 @@ class Game {
         this.canvas = document.getElementById("game-canvas");
         this.stage = new createjs.Stage(this.canvas);
 
+        this.stage.width = this.canvas.width;
+        this.stage.height = this.canvas.height;
+
         createjs.Ticker.setFPS(60);
 
         // redraws the stage at 60 frames per second
@@ -32,6 +35,13 @@ class Game {
         version(){
             return '1.0.0';
         }
+        generateMultipleBoxes(amount=10) {
+            for (var i=amount; i>0; i--) {
+                var movieClip = new NumberedBox(i);
+                this.stage.addChild(movieClip);
+            }
+        }
+
     }
     
 //starts game
