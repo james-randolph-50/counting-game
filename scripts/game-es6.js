@@ -8,6 +8,12 @@ class NumberedBox extends createjs.Container {
         var movieClip = new lib.NumberedBox();
         movieClip.numberText.text = number;
 
+        movieClip.numberText.font = "20px Oswald";
+        movieClip.numberText.textBaseline = "alphabet";
+        movieClip.numberText.x += 2;
+        movieClip.numberText.y = 36;
+
+
         // animates size of boxes on hover
         new createjs.ButtonHelper(movieClip, 0, 1, 2, false, new lib.NumberedBox(), 3);
 
