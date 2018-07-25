@@ -61,6 +61,19 @@ class Game {
             this.stage.removeChild(NumberedBox);
         }
 
+        retinalize() {
+            this.stage.width = this.canvas.width;
+            this.stage.height = this.canvas.height;
+
+            let ratio = window.devicePixelRatio;
+            if (ratio === undefined) {
+                return;
+            }
+
+            this.canvas.setAttribute('width', Math.round( this.stage.width * ratio ));
+            this.canvas.setAttribute('height', Math.round( this.stage.height * ratio ));
+        }
+
     }
     
 //starts game
