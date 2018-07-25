@@ -3,6 +3,12 @@ class NumberedBox extends createjs.Container {
         super();
 
         var movieClip = new locationbar.NumberedBox();
+        movieClip.numberText.text = number;
+        this.addChild(movieclip);
+
+        // randomly place
+        movieclip.x = Math.random() * 200;
+        movieclip.y = Math.random() * 200;
     }
 }
 
